@@ -11,23 +11,35 @@ export default defineNuxtPlugin(({ $pinia }) => {
     withCredentials: true
   })
 
-  const piniaPlugin: PiniaPlugin = () => ({
-    $get(url: string, params?: { [key: string]: any }) {
-      const { data, error } = useAsyncData(() => {
-        let config: AxiosRequestConfig
-        const cookie = useRequestHeaders(['cookie']).cookie
-        if (process.server && cookie) {
-          config = { params, headers: { Cookie: cookie } }
-        } else {
-          config = { params }
-        }
-        return instance.get(url, config)
-      })
-      if (error.value) {
-        showError(error.value)
-      }
+  // const piniaPlugin: PiniaPlugin = () => ({
+  //   async $get(url: string, params?: { [key: string]: any }) {
+  //     const { data, error } = await useAsyncData(async () => {
+  //       let config: AxiosRequestConfig
+  //       const cookie = useRequestHeaders(['cookie']).cookie
+  //       if (process.server && cookie) {
+  //         config = { params, headers: { Cookie: cookie } }
+  //       } else {
+  //         config = { params }
+  //       }
+  //       return await instance.get(url, config)
+  //     })
+  //     if (error.value) {
+  //       showError(error.value)
+  //     }
 
-      return unref(data)!
+  //     return unref(data)!
+  //   }
+  // })
+
+  const headers = useRequestHeaders(['cookie'])
+
+  const piniaPlugin: PiniaPlugin = () => ({
+    async $get(url: string) {
+      if (process.server && headers) {
+        return await useFetch(url, { headers })
+      } else {
+        return await useFetch(url)
+      }
     }
   })
 

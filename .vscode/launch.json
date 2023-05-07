@@ -9,12 +9,19 @@
       "name": "Nuxtjs: Launch Chrome",
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "server: nuxt",
+      "program": "${workspaceFolder}/node_modules/nuxi/bin/nuxi.mjs",
+      "args": ["dev"]
     }
   ],
   "compounds": [
     {
       "name": "fullstack: nuxt",
-      "configurations": ["Nuxtjs: Launch Chrome"]
+      "configurations": ["Nuxtjs: Launch Chrome", "server: nuxt"]
     }
   ]
 }

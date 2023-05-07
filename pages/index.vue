@@ -6,7 +6,6 @@ const userStore = useUserStore()
 const { users } = storeToRefs(userStore)
 const { fetchUsers } = userStore
 await fetchUsers()
-// console.log(users)
 </script>
 
 <template>
