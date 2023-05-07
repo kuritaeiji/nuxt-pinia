@@ -22,6 +22,8 @@
     "stylelint-scss": "^5.0.0"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.4.9"
+    "@pinia/nuxt": "^0.4.9",
+    "axios": "^1.4.0",
+    "pinia": "^2.0.35"
   }
 }
