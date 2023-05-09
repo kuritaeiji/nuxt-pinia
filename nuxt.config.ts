@@ -4,7 +4,8 @@ export default defineNuxtConfig({
   app: {
     head: { title: 'nuxt-pinia' }
   },
-  modules: ['@pinia/nuxt'],
+  srcDir: 'src/',
+  modules: ['@pinia/nuxt', '@vee-validate/nuxt'],
   pinia: {
     autoImports: ['defineStore']
   }

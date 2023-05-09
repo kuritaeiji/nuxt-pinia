@@ -1,6 +1,8 @@
 import { User } from '~/domain/User'
 
-export default defineEventHandler(() => {
+export default defineEventHandler(event => {
+  const cookies = parseCookies(event)
+  console.log(cookies)
   return [
     {
       id: 1,

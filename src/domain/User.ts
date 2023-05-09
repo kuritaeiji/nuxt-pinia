@@ -1,6 +1,8 @@
-export class User {
+export default class User {
   id: number
+
   email: string
+
   isInitialUser: boolean
 
   constructor(id: number, email: string, isInitialUser: boolean) {

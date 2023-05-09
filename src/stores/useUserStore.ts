@@ -1,7 +1,7 @@
-import { User } from '~~/domain/User'
 import { defineStore } from 'pinia'
+import User from '../domain/User'
 
-export const useUserStore = defineStore('user', {
+export default defineStore('user', {
   state() {
     return {
       users: [] as User[]
